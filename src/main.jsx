@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root, { loader as rootLoader, action as rootAction } from "./routes/root";
 import Contact, { loader as contactLoader } from "./routes/Contact";
+import Edit from "./routes/edit";
 
 
 const router = createBrowserRouter([
@@ -16,12 +17,17 @@ const router = createBrowserRouter([
     action: rootAction,
     children: [
       {
-        path: "/contacts/:contactID",
+        path: "/contacts/:contactId",
         element: <Contact />,
+        loader: contactLoader
+      },
+      {
+        path: "/contacts/:contactId/edit",
+        element: <Edit />,
         loader: contactLoader
       }
     ]
-  },
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
