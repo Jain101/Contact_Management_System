@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import ErrorPage from "./errorPage";
+import ErrorPage from "./ErrorPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root, { loader as rootLoader, action as rootAction } from "./routes/root";
 import Contact, { loader as contactLoader } from "./routes/Contact";
-import Edit from "./routes/edit";
+import Edit, { action as editAction, } from "./routes/edit";
+
 
 
 const router = createBrowserRouter([
@@ -24,7 +25,8 @@ const router = createBrowserRouter([
       {
         path: "/contacts/:contactId/edit",
         element: <Edit />,
-        loader: contactLoader
+        loader: contactLoader,
+        action: editAction
       }
     ]
   }
